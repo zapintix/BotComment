@@ -1,0 +1,48 @@
+@startuml
+class org.example.bot.TelegramBot {
+- PostHandler postHandler
+- CommentHandler commentHandler
+- MessageHandler messageHandler
++ String getBotUsername()
++ String getBotToken()
++ void onUpdateReceived(Update)
++ Message sendMessage(SendMessage)
+}
+
+
+class org.example.bot.CommentHandler {
+- List<Integer> sentMessageIds
++ void handleCallbackQuery(CallbackQuery,TelegramBot)
+- void sendAllComments(int,long,TelegramBot)
+- void deletePreviousMessages(long,TelegramBot)
+- void sendErrorMessage(long,TelegramBot)
+}
+
+
+class org.example.bot.KeyboardBuilder {
++ ReplyKeyboardMarkup getMainMenuKeyboard()
++ InlineKeyboardMarkup getInlineKeyboard(List<String>)
+}
+
+class org.example.bot.MessageHandler {
+- PostgresDB postgresDB
+- KeyboardBuilder keyboardBuilder
++ void handleMessage(Message,TelegramBot)
+- void sendAllPosts(Message,TelegramBot)
+- void sendStartMessage(Message,TelegramBot)
+- void sendPostsSelectionMenu(long,TelegramBot)
+- void sendMostPopularPost(Message,TelegramBot)
+- void handleReplyToMessage(Message)
+}
+
+
+class org.example.bot.PostHandler {
+- PostgresDB postgresDB
++ void handleChannelPost(Message)
+}
+
+
+
+
+org.telegram.telegrambots.bots.TelegramLongPollingBot <|-- org.example.bot.TelegramBot
+@enduml

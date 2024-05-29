@@ -1,0 +1,15 @@
+@startuml
+class org.example.db.PostgresDB {
+- {static} String DB_URL
+- {static} String USER
+- {static} String PASSWORD
++ void savePost(String,String,int)
++ {static} List<String> getAllPosts()
++ void saveComment(int,String,String)
++ {static} List<String> getAllComments(int)
++ String getMostPopularPost()
+- {static} Connection getConnection()
+}
+
+
+@enduml

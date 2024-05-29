@@ -1,0 +1,15 @@
+@startuml
+class org.example.bot.TelegramBot {
+}
+class org.example.bot.CommentHandler {
+}
+class org.example.bot.KeyboardBuilder {
+}
+class org.example.bot.MessageHandler {
+}
+class org.example.bot.PostHandler {
+}
+
+
+org.telegram.telegrambots.bots.TelegramLongPollingBot <|-- org.example.bot.TelegramBot
+@enduml
